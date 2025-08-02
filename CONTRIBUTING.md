@@ -1,4 +1,4 @@
-# Contributing to plan-engine
+# Contributing to Routine-Ops
 
 First off, thanks for taking the time to contribute! We welcome improvements, bug fixes, tests, and documentation enhancements.
 
@@ -11,134 +11,129 @@ First off, thanks for taking the time to contribute! We welcome improvements, bu
    * [Reporting Issues](#reporting-issues)
    * [Suggesting Enhancements](#suggesting-enhancements)
    * [Submitting Pull Requests](#submitting-pull-requests)
-4. [Development Workflow](#development-workflow)
+4. [Repository-specific Guidelines](#repository-specific-guidelines)
+
+   * [plan-engine](#plan-engine)
+   * [backend](#backend)
+   * [ui](#ui)
+5. [Development Workflow](#development-workflow)
 
    * [Branching Model](#branching-model)
    * [Commit Message Guidelines](#commit-message-guidelines)
    * [Writing Tests](#writing-tests)
-5. [Style and Quality](#style-and-quality)
-6. [Local Testing](#local-testing)
-7. [Release Process](#release-process)
-8. [License](#license)
+6. [Style and Quality](#style-and-quality)
+7. [License](#license)
 
 ---
 
 ## Getting Started
 
-1. Fork the repository.
-2. Clone your fork:
+1. **Clone the repository** for the project you want to work on:
 
    ```bash
+   git clone https://github.com/routine-ops/<repository-name>.git
+   cd <repository-name>
    ```
-
-git clone [https://github.com/your-org/plan-engine.git](https://github.com/your-org/plan-engine.git)
-cd plan-engine
-
-````
-3. Install dependencies (see `README.md`):
-   ```bash
-poetry install
-````
-
-4. Create a feature branch:
+2. **Install dependencies** as described in that repo’s `README.md`:
 
    ```bash
+   # Example for Python projects
+   poetry install
+   # Example for JavaScript projects
+   npm install
    ```
+3. **Create a feature branch**:
 
-git checkout -b feature/my-new-feature
-
-```
+   ```bash
+   git checkout -b feature/my-new-feature
+   ```
 
 ## Code of Conduct
 
-This project follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). Please ensure you read and follow it.
+This project follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). Please read and abide by it to foster a welcoming community.
 
 ## How to Contribute
 
 ### Reporting Issues
 
-If you find a bug or have a feature request, please open an issue:
-1. Check for existing issues to avoid duplicates.
-2. Fill out the issue template with:
-   - A clear description of the problem or feature.
-   - Steps to reproduce (for bugs).
-   - Expected vs. actual behavior.
+* Search existing issues to avoid duplicates.
+* When opening a new issue, use the default template and include:
+
+  * A clear description of the problem or feature request.
+  * Steps to reproduce (for bugs).
+  * Expected vs. actual behavior.
 
 ### Suggesting Enhancements
 
-Enhancement requests should include:
-- A clear description of the enhancement.
-- Use cases or user stories.
-- Any relevant context (e.g., links, screenshots).
+* Describe the enhancement clearly.
+* Include use cases or user stories.
+* Add any relevant context (links, screenshots).
 
 ### Submitting Pull Requests
 
-1. Fork the repo and create a branch from `main`.
-2. Commit your changes in logical, atomic commits.
+1. Fork the target repository and branch from `main`.
+2. Commit changes in atomic, descriptive commits.
 3. Push your branch to your fork.
-4. Open a PR against `main` with:
-   - A descriptive title.
-   - Summary of changes.
-   - Issue reference (if applicable).
+4. Open a pull request against `main` including:
+
+   * A concise title.
+   * A summary of changes.
+   * A reference to the related issue (if any).
+
+## Repository-specific Guidelines
+
+### plan-engine
+
+See the [plan-engine CONTRIBUTING.md](https://github.com/routine-ops/routine-ops-plan-engine/blob/main/CONTRIBUTING.md) for coding standards, build steps, and testing protocols.
+
+### backend
+
+Refer to the [backend CONTRIBUTING.md](https://github.com/routine-ops/routine-ops-backend/blob/main/CONTRIBUTING.md) for database migration, API docs, and test guidelines.
+
+### ui
+
+Consult the [ui CONTRIBUTING.md](https://github.com/routine-ops/routine-ops-ui/blob/main/CONTRIBUTING.md) for style rules, component testing, and CI/CD setup.
 
 ## Development Workflow
 
 ### Branching Model
 
-- `main` branch is always production-ready.
-- Create feature branches from `main`:
-  - `feature/<short-description>` for new features.
-  - `bugfix/<short-description>` for bug fixes.
-  - `docs/<short-description>` for documentation-only changes.
+* **main** is always production-ready.
+* Create feature branches:
+
+  * `feature/<short-description>` for new features.
+  * `bugfix/<short-description>` for fixes.
+  * `docs/<short-description>` for documentation updates.
 
 ### Commit Message Guidelines
 
-Follow the [Conventional Commits](https://www.conventionalcommits.org/) spec:
-```
+Follow [Conventional Commits](https://www.conventionalcommits.org/):
 
+```
 <type>(<scope>): <subject>
 
 <body>
 
 <footer>
 ```
-- **type**: `feat`, `fix`, `docs`, `chore`, `style`, `refactor`, `test`.
-- **scope**: optional component or file impacted.
-- **subject**: short summary (<50 chars).
-- **body**: detailed description.
-- **footer**: references issues (#123) or breaking changes.
+
+* **type**: `feat`, `fix`, `docs`, `chore`, `style`, `refactor`, `test`.
+* **scope**: optional component or file affected.
+* **subject**: brief summary (<50 chars).
 
 ### Writing Tests
 
-* Add unit tests for new features or bug fixes.
-* Use pytest conventions.
-* Keep tests deterministic and stateless.
-* Aim for high coverage in core logic (chains, tools, API schemas).
+* Add unit/integration tests for new features and bug fixes.
+* Use pytest for Python and Jest for JavaScript.
+* Keep tests deterministic and idempotent.
 
 ## Style and Quality
 
-* Follow PEP 8 for Python code.
-* Run `black .` and `flake8` before committing.
-* Document public functions and classes with docstrings.
-* Update `CHANGELOG.md` for user-facing changes.
-
-## Local Testing
-
-```bash
-pytest --maxfail=1 --disable-warnings -q
-```
-
-Ensure all tests pass before opening a PR.
-
-## Release Process
-
-Releases are managed via GitHub releases and follow Semantic Versioning (SemVer).
-
-1. Bump version in `pyproject.toml`.
-2. Update `CHANGELOG.md`.
-3. Tag the commit (`vX.Y.Z`).
-4. Push and create a GitHub release.
+* Follow PEP 8 and run `black` + `flake8` for Python.
+* Use `prettier` + `eslint` for JS/TS.
+* Document public APIs with docstrings or JSDoc.
+* Update `CHANGELOG.md` for any user-facing changes.
 
 ## License
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+This project is licensed under the MIT License—see the [`LICENSE`](LICENSE) file for details.
