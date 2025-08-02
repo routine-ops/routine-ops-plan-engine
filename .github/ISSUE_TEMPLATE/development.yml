@@ -1,0 +1,65 @@
+name: "📝 Development Task"
+description: "Create a new development task, bug fix, or feature request for the routine-ops-plan-engine service"
+
+# Issue title (used as card title on your Kanban board)
+title: "[routine-ops-plan-engine] <Short summary>"
+
+# Predefined labels
+labels:
+  - "Component: routine-ops-backend"
+  - "type: enhancement"   # Options: enhancement, bug, chore, documentation
+  - "priority: medium"    # Options: high, medium, low
+
+body:
+  - type: dropdown
+    id: component
+    attributes:
+      label: "Component"
+      description: "Select the area of the backend codebase"
+      options:
+        - "routine-ops-backend"
+        - "routine-ops-ui"
+        - "routine-ops-plan-engine"
+
+  - type: input
+    id: summary
+    attributes:
+      label: "Short summary"
+      description: "One-line summary of the issue or feature"
+      placeholder: "e.g. Support daily plan scheduling"
+
+  - type: textarea
+    id: details
+    attributes:
+      label: "Detailed description"
+      description: "Provide context, expected behavior, and implementation notes"
+      placeholder: "Explain what needs to be done and why."
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "Priority"
+      description: "Impact level of this task"
+      options:
+        - "high"
+        - "medium"
+        - "low"
+
+  - type: dropdown
+    id: estimate
+    attributes:
+      label: "Estimate (in days)"
+      description: "Rough estimate of time to complete"
+      options:
+        - "1"
+        - "2"
+        - "3"
+        - "5"
+        - "8"
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: "Acceptance Criteria"
+      description: "Define how you’ll know this is done"
+      placeholder: "List testable criteria, e.g., unit tests, endpoint responses"
